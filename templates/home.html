@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="description" content="A web tool for flexibly generating fixture lists for sports tournaments or similar." />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+    <script type="text/javascript" src="static/fixtures.js" ></script>
+    <link href="static/fixstyle.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8" />
+    <title>Fixture Generator</title>
+</head>
+<body>
+    <h1>Fixture Generator</h1>
+    <p>Use the form below to generate a concise fixture list for round-robin tournaments in which pairs of players/teams are required to play each either once or twice on a limited number of pitches or courts. 
+    Optimal (most efficient) solutions will be sought for 15 seconds, and if none can be reached, the best available will be returned. Players/teams are referred to using numbers <em>1 - [num_teams]</em>, which
+    can easily be substituted for player or team names in a spreadsheet application.
+    Results are delivered on the screen and can be downloaded in .csv format</p>
+    <p><strong>Note that useful results cannot be guaranteed for difficult queries (group sizes > 20) or nonsensical parameters (groups > teams)!</strong></p>    
+    <form>
+        <fieldset>
+            <p><label>Number of Teams:</label><input id="teams" value="16" type="text" title="Total number of teams in the tournament"></p>
+            <p><label>Number of Groups:</label><input id="groups" value="2" type="text" title="The algorithm will divide the teams into as evenly-sized groups as possible"></p>
+            <p><label>Number of Pitches/Courts:</label><input id="pitches" value="5" type="text" title="Total number of available playing areas"></p>
+            <p><label>Reverse fixtures (i.e. home and away)?</label><input id="reverse" type="checkbox" title="Check this to have teams play all the other teams in their group twice as opposed to once"></p>
+            <p><label>Optimise Rounds?</label><input id="optrounds" type="checkbox" title="Check this to try to even out the spacing of playing and rest rounds for each team"></p>
+            <p><label>Optimise Pitches/Courts?</label><input id="optpitch" type="checkbox" title='Check this to try to have teams play as many matches as possible on some "home" pitch rather than moving around continually'></p>
+            <input value="Download" type="button" id="download" style="display: none; float: left;" onClick="window.location.href='/download/'"><input value="Submit" type="button" id="submit">
+        </fieldset>
+    </form>
+    <p>If you have any problems, queries or suggestions, please e-mail <a href="mailto:fixturegenerator@gmail.com">fixturegenerator@gmail.com</a>.</p>
+    <div id="results"></div>
+</body>
+</html>

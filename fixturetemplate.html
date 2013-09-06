@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="/static/fixstyle.css" rel="stylesheet" type="text/css" />
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
+    <table id="hor-zebra">
+        <tr><th class="rightborder"></th>
+            {% for p in pitches %}
+                <th colspan="2" class="rightborder">Pitch {{ p }}</th>
+            {% endfor %}        
+        </tr>
+        {% for round in fixtures %}
+        <tr class="{{ loop.cycle('odd', 'even') }}">
+            <th class="tableentry rightborder">Round {{ loop.index }}</th>
+            {% for game in round %}
+            <td class="tableentry">{{ game.0 }}</td><td class="tableentry rightborder">{{ game.1 }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
